@@ -2,6 +2,44 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+        <th>image</th>
+        <th>name</th>
+        <th>description</th>
+        <th>price</th>
+        <th>quantity</th>
+        <th>total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <%@order.line_items.each do |line_item|%> 
+        <tr>
+          <th><img src = "<%=line_item.product.image.tiny.url%>"></th>
+          <th><p><%=line_item.product.name%></p></th>
+          <th><p><%=line_item.product.description%></p></th>
+          <th><p><%=line_item.quantity%></p></th>
+          <th><p><%=humanized_money_with_symbol line_item.item_price_cents / 100%></p></th>
+          <th><p><%=humanized_money_with_symbol line_item.total_price_cents / 100%></p></th>
+        </tr>
+      <% end %>
+
+
+
+    </table>
+
+    <%=@order.email%>
+    <%=@order.total_cents%>
+
+    
+
+      
+      
+    
+
   </header>
 
   <div class="order-summary jumbotron">
@@ -9,5 +47,3 @@
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
-
-</section>
