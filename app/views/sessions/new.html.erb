@@ -1,0 +1,16 @@
+<h1>Sign In</h1>
+<%= form_for :session, url: '/sessions' do |f| %>
+
+  Email: <%= f.text_field :email %>
+  Password: <%= f.password_field :password %>
+  <%= f.submit "Submit" %>
+
+<% end %>
+
+<% flash.each do |key, value| %>
+  <% if key == "alert" %>
+    <div class="alert alert-danger">
+      <%= value %>
+    </div>
+  <% end %>
+<% end %>
