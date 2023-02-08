@@ -1,0 +1,13 @@
+
+  <header class="page-header">
+  <h1>My Cart</h1>
+</header>
+
+<%if enhanced_cart.length == 0%> 
+  cart is empty
+  <a href="<%= root_path %>">Go back home</a>
+  <%else%>
+  <%= render 'cart'%>
+<%end%>
+
+</section>
